@@ -40,7 +40,7 @@ public class UserController {
     return "home";
   }*/
 
-  @RequestMapping(value = "/admin/list", method = RequestMethod.GET)
+  @RequestMapping(value = "/list", method = RequestMethod.GET)
   public List<User> listUser(){
     List<User> user = userService.findAll();
     return user;
