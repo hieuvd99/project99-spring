@@ -1,4 +1,4 @@
-package com.example.payload.response;
+package com.example.form.response;
 
 import java.util.List;
 

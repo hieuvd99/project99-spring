@@ -10,5 +10,6 @@ public interface UserService {
   List<User> findAll();
   User save(User user);
   User findByUsername(String username);
+  User findById(long id);
   Boolean existsByUsername(String username);
 }

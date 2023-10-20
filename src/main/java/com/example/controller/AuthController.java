@@ -1,10 +1,12 @@
 package com.example.controller;
 
+import com.example.model.Address;
 import com.example.model.User;
-import com.example.payload.request.LoginRequest;
-import com.example.payload.request.SignupRequest;
-import com.example.payload.response.JwtResponse;
-import com.example.payload.response.MessageResponse;
+import com.example.form.request.LoginRequest;
+import com.example.form.request.SignupRequest;
+import com.example.form.response.JwtResponse;
+import com.example.form.response.MessageResponse;
+import com.example.repository.AddressRepository;
 import com.example.repository.UserRepository;
 import com.example.security.jwt.JwtUtils;
 import com.example.security.service.CustomUserDetails;
@@ -14,9 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +35,9 @@ public class AuthController {
 
   @Autowired
   UserRepository userRepository;
+
+  @Autowired
+  AddressRepository addressRepository;
 
   @Autowired
   PasswordEncoder encoder;
@@ -82,6 +85,8 @@ public class AuthController {
         encoder.encode(signUpRequest.getPassword()));
 
     user.setRole(ROLE_USER);
+    Address address = new Address(null, null, user);
+    addressRepository.save(address);
     userRepository.save(user);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

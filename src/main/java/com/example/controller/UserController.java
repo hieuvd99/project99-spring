@@ -1,48 +1,38 @@
 package com.example.controller;
 
-import com.example.model.User;
-import com.example.service.UserService;
+import com.example.repository.AddressRepository;
+import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/api/profile")
 public class UserController {
 
   @Autowired
-  private UserService userService;
+  UserRepository userRepository;
 
-/*  @RequestMapping("/")
-  public String home(Model model) {
-    String username = "admin";
-    String password = "admin";
-    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    String encodedPassword = passwordEncoder.encode(password);
+  @Autowired
+  private AddressRepository addressRepository;
 
-    if(!userService.existsByUsername(username))  {
+//  @PostMapping("/address")
+//  public ResponseEntity<?> updateAddress( @RequestBody Address address) {
+//
+//    User user = userRepository.findById();
+//    address.setUser(user);
+//    addressRepository.save(address);
+//
+//    return ResponseEntity.ok(new MessageResponse("Update address successfully!"));
+//  }
 
-      User user = new User();
-      user.setId(1L);
-      user.setUsername(username);
-      user.setPassword(encodedPassword);
-      user.setEmail("admin@gmail.com");
-      userService.save(user);
-      System.out.println("====================password: " + encodedPassword);
-    }
-    return "home";
-  }*/
+//  @GetMapping("/test/{user_id}")
+//  public UserInfo test(@PathVariable long user_id) {
+//
+//    UserInfo abc = userRepository.userInfo(user_id);
+//
+//    return abc;
+//  }
 
-  @RequestMapping(value = "/list", method = RequestMethod.GET)
-  public List<User> listUser(){
-    List<User> user = userService.findAll();
-    return user;
-  }
+
 }

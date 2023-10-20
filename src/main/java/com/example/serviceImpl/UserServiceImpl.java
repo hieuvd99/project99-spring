@@ -33,6 +33,11 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public User findById(long id) {
+    return userRepository.findById(id);
+  }
+
+  @Override
   public Boolean existsByUsername(String username) {
     // TODO Auto-generated method stub
     return userRepository.existsByUsername(username);

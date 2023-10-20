@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table( name = "user", schema = "hieuvd99",
+@Table( name = "user_info",
         uniqueConstraints = {
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
@@ -31,6 +31,9 @@ public class User {
 
   //roles: ROLE_USER or ROLE_ADMIN
   private String role;
+
+  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+  private Address address;
 
   public User(){
   }
