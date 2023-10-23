@@ -68,7 +68,7 @@ public class AdminController {
       ResponseEntity.badRequest().body(new MessageResponse("Error: Cant find user!"));
     }
     userRepository.delete(user);
-    return ResponseEntity.ok(new MessageResponse("Detele successfully!"));
+    return ResponseEntity.ok(new MessageResponse("Delete successfully!"));
   }
 
 }
