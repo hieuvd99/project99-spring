@@ -1,7 +1,7 @@
 package com.example.controller;
 
-import com.example.repository.AddressRepository;
-import com.example.repository.UserRepository;
+import com.example.dao.repository.AddressRepository;
+import com.example.dao.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,5 +1,6 @@
-package com.example.repository;
+package com.example.dao.repository;
 
+import com.example.dao.BaseSQL;
 import com.example.model.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
